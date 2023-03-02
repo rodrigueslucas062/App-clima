@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     border: 0;
-    outline: 0;
+    outline: none;
     box-sizing: border-box;
 }
 
@@ -10,7 +10,6 @@ body{
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-items: center;
     justify-content: center;
     background: #06283D;
 }
@@ -20,7 +19,7 @@ body{
     width: 400px;
     height: 105px;
     background: #fff;
-    padding: 28px 28px;
+    padding: 28px 32px;
     overflow: hidden;
     border-radius: 18px;
     font-family: 'Roboto', sans-serif;
@@ -35,7 +34,7 @@ body{
     justify-content: space-between;
 }
 
-.search-box{
+.search-box input{
     color: #06283D;
     width: 80%;
     font-size: 24px;
@@ -62,7 +61,7 @@ body{
     transition: 0.4s ease;
 }
 
-.search-box button::hover{
+.search-box button:hover{
     color: #fff;
     background: #06283D;
 }
@@ -77,7 +76,7 @@ body{
     text-align: center;
 }
 
-.weather-box image{
+.weather-box img{
     width: 60%;
     margin-top: 30px;
 }
@@ -86,7 +85,8 @@ body{
     position: relative;
     color: #06283D;
     font-size: 4rem;
-    font-weight: 30px;
+    font-weight: 800;
+    margin-top: 30px;
     margin-left: -16px;
 }
 
@@ -96,7 +96,7 @@ body{
     font-size: 1.5rem;
 }
 
-.weather-box .descricao{
+.weather-box .description{
     color: #06283D;
     font-size: 22px;
     font-weight: 500;
@@ -110,16 +110,16 @@ body{
     margin-top: 30px;
 }
 
-.weather-details .umidade, .weather-details .wind{
+.weather-details .humidity, .weather-details .wind{
     display: flex;
     align-items: center;
     width: 50%;
     height: 100px;
 }
 
-.weather-details .umidade{
-    padding: 20px;
-    justify-content: flex-end;
+.weather-details .humidity{
+    padding-left: 20px;
+    justify-content: flex-start;
 }
 
 .weather-details .wind{
@@ -138,7 +138,6 @@ body{
     color: #06283D;
     font-size: 22px;
     font-weight: 500;
-
 }
 
 .weather-details p{
@@ -172,13 +171,13 @@ body{
     opacity: 0;
 }
 
-.fade-in{
+.fadeIn{
     animation: 0.5s fadeIn forwards;
     animation-delay: 0.5s;
 }
 
 @keyframes fadeIn{
-    to{
+    to {
         scale: 1;
         opacity: 1;
     }
