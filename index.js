@@ -4,17 +4,21 @@ const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 
-serch .addEventlistner('click', ()  =>{
-    const APIKey = 'ec5c20a1796f19df27d4d112d936dbba';
-    const city = document.querySelector('.search-box input').Value;
+search.addEventListener('click', () => {
 
-    if(city == '')
+    const APIKey = 'ec5c20a1796f19df27d4d112d936dbba';
+    const city = document.querySelector('.search-box input').value;
+
+    if (city === '')
         return;
 
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`).then(response => response.json()).then(json =>{
-            if(json.cod === '404'){
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
+        .then(response => response.json())
+        .then(json => {
+
+            if (json.cod === '404') {
                 container.style.height = '400px';
-                weatherBox.style.display ='none';
+                weatherBox.style.display = 'none';
                 weatherDetails.style.display = 'none';
                 error404.style.display = 'block';
                 error404.classList.add('fadeIn');
@@ -26,43 +30,44 @@ serch .addEventlistner('click', ()  =>{
 
             const image = document.querySelector('.weather-box img');
             const temperature = document.querySelector('.weather-box .temperature');
-            const description = document.querySelector('.weather-details .description');
-            const humidity = document.querySelector('.weather-details .wind span');
+            const description = document.querySelector('.weather-box .description');
+            const humidity = document.querySelector('.weather-details .humidity span');
+            const wind = document.querySelector('.weather-details .wind span');
 
-            switch(json.weather[0].main){
-                case 'Limpo':
-                    image.src = 'images/clear.png';
+            switch (json.weather[0].main) {
+                case 'Clear':
+                    image.src = 'imagens/clear.png';
                     break;
 
-                case 'Chuva':
-                    image.src = 'images/rain.png';
+                case 'Rain':
+                    image.src = 'imagens/rain.png';
                     break;
 
-                case 'Neve':
-                    image.src = 'images/snow.png';
+                case 'Snow':
+                    image.src = 'imagens/snow.png';
                     break;
 
-                case 'Nublado':
-                    image.src = 'images/cloud.png';
+                case 'Clouds':
+                    image.src = 'imagens/cloud.png';
                     break;
 
-                case 'Nevoa':
-                    image.src = 'images/mist.png';
+                case 'Haze':
+                    image.src = 'imagens/mist.png';
                     break;
 
                 default:
-                    image.src= '';
+                    image.src = '';
             }
 
-            temperature.innerHTML = '${parseInt(json.main.temp)}<span>C°</span>';
-            description.innerHTML = '${json.weather[0].description}';
-            humidity.innerHTML = '${json.main.humidity}%';
-            window.innerHTML = '${parseInt(json.wind.speed)}Km/h';
+            temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
+            description.innerHTML = `${json.weather[0].description}`;
+            humidity.innerHTML = `${json.main.humidity}%`;
+            wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
 
-            weatherBox.style.display ='';
-            weatherDetails.display = '';
-            weatherBox.classList.add = ('fadeIn');
+            weatherBox.style.display = '';
+            weatherDetails.style.display = '';
+            weatherBox.classList.add('fadeIn');
             weatherDetails.classList.add('fadeIn');
-            container.style.height = '590px'
+            container.style.height = '590px';
         });
 });
